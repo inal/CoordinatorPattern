@@ -12,8 +12,7 @@ class ScreenCCoordinator: Coordinator{
 
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
-    var previous: Router
-    var next = Router.init(isPresented: .constant(false))
+    var router: Router
     
     init(
         parent: BaseCoordinator,
@@ -21,7 +20,7 @@ class ScreenCCoordinator: Coordinator{
     ) {
         self.parentCoordinators = parent.parentCoordinators
         self.parentCoordinators.append(parent)
-        self.previous = Router.init(isPresented: isNavigating)
+        self.router = Router.init(isPresented: isNavigating)
         print("\(#function) --> \(String(describing: self))")
     }
 
@@ -35,10 +34,10 @@ class ScreenCCoordinator: Coordinator{
                 (self.parentCoordinators.filter { $0 is AppCoordinator }.first as? AppCoordinator)?.update(.preLogin)
             },
             popToScreenAAction: {
-                self.parentCoordinators.filter { $0 is ScreenACoordinator }.first?.dismiss()
+                self.parentCoordinators.filter { $0 is ScreenBCoordinator }.first?.dismiss()
             }
         )
-        return ScreenCView(viewModel: viewModel, router: previous)
+        return ScreenCView(viewModel: viewModel, router: router)
     }
 
     deinit {

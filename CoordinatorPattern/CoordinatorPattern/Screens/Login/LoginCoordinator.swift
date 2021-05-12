@@ -12,15 +12,14 @@ class LoginCoordinator: Coordinator{
 
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
-    var previous: Router
-    var next: Router = .init(isPresented: .constant(false))
+    var router: Router 
     init(
         parent: BaseCoordinator,
         isNavigating: Binding<Bool>
     ) {
         self.parentCoordinators = parent.parentCoordinators
         self.parentCoordinators.append(parent)
-        self.previous = Router.init(isPresented: isNavigating)
+        self.router = Router.init(isPresented: isNavigating)
 
         print("\(#function) --> \(String(describing: self))")
     }
@@ -36,7 +35,7 @@ class LoginCoordinator: Coordinator{
                 (self.parentCoordinators.filter { $0 is AppCoordinator }.first as? AppCoordinator)?.update(.postLogin)
             }
         )
-        return LoginView(viewModel: viewModel, previous: previous, next: next)
+        return LoginView(viewModel: viewModel, router: router)
     }
     
     deinit {

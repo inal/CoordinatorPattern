@@ -9,16 +9,13 @@ import SwiftUI
 
 struct LandingView: View {
     @StateObject private var viewModel: LandingViewModel
-    @StateObject private var previous: Router
-    @StateObject private var next: Router
+    @StateObject private var router: Router
 
     init(viewModel: LandingViewModel,
-         previous: Router,
-         next: Router
+         router: Router
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        _previous = StateObject(wrappedValue: previous)
-        _next = StateObject(wrappedValue: next)
+        _router = StateObject(wrappedValue: router)
     }
 
     var body: some View {
@@ -29,8 +26,7 @@ struct LandingView: View {
                 Button(.init("Login"), action: viewModel.loginAction)
                 Button(.init("Signup"), action: viewModel.signupAction)
                 Spacer()
-                    .navigation(previous)
-                    .navigation(next)
+                    .navigation(router)
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -44,8 +40,7 @@ struct LandingScreen_Previews: PreviewProvider {
                 loginAction: {},
                 signupAction: {}
             ),
-            previous: Router(isPresented: .constant(false)),
-            next: Router(isPresented: .constant(false))
+            router: Router(isPresented: .constant(false))
         )
     }
 }

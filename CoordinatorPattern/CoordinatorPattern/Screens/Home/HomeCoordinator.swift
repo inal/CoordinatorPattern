@@ -9,8 +9,7 @@ import Foundation
 import SwiftUI
 
 class HomeCoordinator: Coordinator{
-    var previous: Router = Router.init(isPresented: .constant(false))
-    var next: Router = Router.init(isPresented: .constant(false))
+    var router: Router = Router.init(isPresented: .constant(false))
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
     
@@ -27,16 +26,16 @@ class HomeCoordinator: Coordinator{
             },
             tab2Action: {}
         )
-        return HomeView(viewModel: viewModel, previous: previous, next: next)
+        return HomeView(viewModel: viewModel, router: router)
     }
 
     func navigateToScreenA(){
         let coordinator = ScreenACoordinator(
             parent: self,
-            isNavigating: self.next.isNavigating
+            isNavigating: self.router.isNavigating
         )
         self.childCoordinators.append(coordinator)
-        self.next.navigateTo(coordinator.start())
+        self.router.navigateTo(coordinator.start())
     }
 
     deinit {

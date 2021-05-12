@@ -9,18 +9,15 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject private var viewModel: HomeViewModel
-    @StateObject private var previous: Router
-    @StateObject private var next: Router
+    @StateObject private var router: Router
     @State var selectedView = 1
 
     init(
         viewModel: HomeViewModel,
-        previous: Router,
-        next: Router
+        router: Router
     ) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        _previous = StateObject(wrappedValue: previous)
-        _next = StateObject(wrappedValue: next)
+        _router = StateObject(wrappedValue: router)
     }
 
     var body: some View {
@@ -46,8 +43,7 @@ struct HomeView: View {
                 }
                 Spacer()
             }
-            .navigation(previous)
-            .navigation(next)
+            .navigation(router)
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarHidden(true)
@@ -66,8 +62,7 @@ struct HomeScreen_Previews: PreviewProvider {
                 tab1Action: {},
                 tab2Action: {}
             ),
-            previous: Router(isPresented: .constant(false)),
-            next: Router(isPresented: .constant(false))
+            router: Router(isPresented: .constant(false))
         )
     }
 }

@@ -10,8 +10,7 @@ import SwiftUI
 
 class LandingCoordinator: Coordinator{
     var parentCoordinators: [BaseCoordinator] = []
-    var previous = Router.init(isPresented: .constant(false))
-    var next = Router.init(isPresented: .constant(false))
+    var router: Router = Router.init(isPresented: .constant(false))
 
     weak var parentCoordinator: BaseCoordinator?
     var childCoordinators: [BaseCoordinator] = []
@@ -31,22 +30,22 @@ class LandingCoordinator: Coordinator{
                 self.navigateToSignup()
             }
         )
-        return LandingView(viewModel: viewModel, previous: previous, next: next)
+        return LandingView(viewModel: viewModel, router: router)
     }
 
     func navigateToLogin(){
         let loginCoordinator = LoginCoordinator(
             parent: self,
-            isNavigating: self.next.isNavigating
+            isNavigating: self.router.isNavigating
         )
         self.childCoordinators.append(loginCoordinator)
-        self.next.navigateTo(loginCoordinator.start())
+        self.router.navigateTo(loginCoordinator.start())
     }
 
     func navigateToSignup(){
         let signupCoordinator = SignupCoordinator(
             parent: self,
-            isNavigating: self.next.isNavigating,
+            isNavigating: self.router.isNavigating,
             signupCompletion: {
                 self.childCoordinators.filter{ $0 is SignupCoordinator}.first?.dismiss()
                 DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
@@ -54,7 +53,7 @@ class LandingCoordinator: Coordinator{
                 }
             })
         self.childCoordinators.append(signupCoordinator)
-        self.next.navigateTo(signupCoordinator.start())
+        self.router.navigateTo(signupCoordinator.start())
     }
 
     deinit {

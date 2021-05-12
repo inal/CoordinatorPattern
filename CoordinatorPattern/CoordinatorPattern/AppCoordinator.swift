@@ -20,8 +20,7 @@ class AppCoordinator: Coordinator, ObservableObject{
     var childCoordinators: [BaseCoordinator] = []
     var parentCoordinator: BaseCoordinator? = nil
 
-    var previous: Router = .init(isPresented: .constant(false))
-    var next: Router = .init(isPresented: .constant(false))
+    var router: Router = .init(isPresented: .constant(false))
 
     func start() -> some View {
         switch appState {

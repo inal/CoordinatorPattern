@@ -12,8 +12,7 @@ class SignupCoordinator: Coordinator{
 
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
-    var previous: Router
-    var next: Router = .init(isPresented: .constant(false))
+    var router: Router 
     let signupCompletion: Action
 
     init(
@@ -23,7 +22,7 @@ class SignupCoordinator: Coordinator{
     ) {
         self.parentCoordinators = parent.parentCoordinators
         self.parentCoordinators.append(parent)
-        self.previous = Router.init(isPresented: isNavigating)
+        self.router = Router.init(isPresented: isNavigating)
         self.signupCompletion = signupCompletion
         print("\(#function) --> \(String(describing: self))")
     }
@@ -33,7 +32,7 @@ class SignupCoordinator: Coordinator{
             backAction: dismiss,
             signupAction: signupCompletion
         )
-        return SignupView(viewModel: viewModel, previous: previous, next: next)
+        return SignupView(viewModel: viewModel, router: router)
     }
     
     deinit {

@@ -9,15 +9,12 @@ import SwiftUI
 
 struct ScreenAView: View {
     @StateObject private var viewModel: ScreenAViewModel
-    @StateObject private var previous: Router
-    @StateObject private var next: Router
+    @StateObject private var router: Router
 
     init(viewModel: ScreenAViewModel,
-         previous: Router,
-         next: Router) {
+         router: Router) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        _previous = StateObject(wrappedValue: previous)
-        _next = StateObject(wrappedValue: next)
+        _router = StateObject(wrappedValue: router)
     }
     
     var body: some View {
@@ -35,8 +32,7 @@ struct ScreenAView: View {
             Spacer()
 
         }
-        .navigation(previous)
-        .navigation(next)
+        .navigation(router)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
@@ -44,6 +40,6 @@ struct ScreenAView: View {
 
 struct ScreenAView_Previews: PreviewProvider {
     static var previews: some View {
-        ScreenAView(viewModel: .init(backAction: {}, screenAAction: {}), previous: .init(isPresented: .constant(false)), next: .init(isPresented: .constant(false)))
+        ScreenAView(viewModel: .init(backAction: {}, screenAAction: {}), router: .init(isPresented: .constant(false)))
     }
 }

@@ -8,8 +8,7 @@
 import SwiftUI
 
 protocol BaseCoordinator: AnyObject {
-    var previous: Router { get set }
-    var next: Router { get set }
+    var router: Router { get set }
     var childCoordinators: [BaseCoordinator] { get set }
     var parentCoordinators: [BaseCoordinator] { get set }
     func stop()
@@ -47,7 +46,7 @@ extension Coordinator{
      Make sure to dismiss self router first then rest of the children else screen will show weird transitions.
      */
     func dismiss() {
-        previous.dismiss()
+        router.dismiss()
         for (_, childCoordinator) in childCoordinators.enumerated() {
             childCoordinator.dismiss()
         }

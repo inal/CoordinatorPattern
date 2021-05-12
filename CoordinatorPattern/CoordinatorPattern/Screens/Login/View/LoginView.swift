@@ -9,17 +9,14 @@ import SwiftUI
 
 struct LoginView: View {
     @StateObject private var viewModel: LoginViewModel
-    @StateObject private var previous: Router
-    @StateObject private var next: Router
+    @StateObject private var router: Router
     @State private var name: String = ""
     @State private var password: String = ""
 
     init(viewModel: LoginViewModel,
-         previous: Router,
-         next: Router) {
+         router: Router) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        _previous = StateObject(wrappedValue: previous)
-        _next = StateObject(wrappedValue: next)
+        _router = StateObject(wrappedValue: router)
     }
 
     var body: some View {
@@ -46,8 +43,7 @@ struct LoginView: View {
             Spacer()
             Spacer()
         }
-        .navigation(previous)
-        .navigation(next)
+        .navigation(router)
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(true)
     }
@@ -56,6 +52,6 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(viewModel: .init(backAction: {}, loginAction: {_,_ in }), previous: .init(isPresented: .constant(false)), next: .init(isPresented: .constant(false)))
+        LoginView(viewModel: .init(backAction: {}, loginAction: {_,_ in }), router: .init(isPresented: .constant(false)))
     }
 }
