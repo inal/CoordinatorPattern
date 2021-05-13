@@ -28,7 +28,7 @@ class ScreenCCoordinator: Coordinator{
         let viewModel = ScreenCViewModel(
             backAction: dismiss,
             popToRootAction: {
-                self.parentCoordinators.filter { $0 is HomeCoordinator }.first?.dismiss()
+                self.parentCoordinators.filter { $0 is ScreenACoordinator }.first?.dismiss()
             },
             popToLoginAction: {
                 (self.parentCoordinators.filter { $0 is AppCoordinator }.first as? AppCoordinator)?.update(.preLogin)
