@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject private var viewModel: HomeViewModel
-    @StateObject private var router: Router
+    @ObservedObject private var viewModel: HomeViewModel
+    @ObservedObject private var router: Router
     @State var selectedView = 1
 
     init(
         viewModel: HomeViewModel,
         router: Router
     ) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-        _router = StateObject(wrappedValue: router)
+        _viewModel = ObservedObject(wrappedValue: viewModel)
+        _router = ObservedObject(wrappedValue: router)
     }
 
     var body: some View {

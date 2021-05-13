@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct ScreenAView: View {
-    @StateObject private var viewModel: ScreenAViewModel
-    @StateObject private var router: Router
+    @ObservedObject private var viewModel: ScreenAViewModel
+    @ObservedObject private var router: Router
 
     init(viewModel: ScreenAViewModel,
          router: Router) {
-        _viewModel = StateObject(wrappedValue: viewModel)
-        _router = StateObject(wrappedValue: router)
+        _viewModel = ObservedObject(wrappedValue: viewModel)
+        _router = ObservedObject(wrappedValue: router)
     }
     
     var body: some View {
