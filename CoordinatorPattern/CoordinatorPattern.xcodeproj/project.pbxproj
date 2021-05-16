@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C9F1219264FF96600850DE3 /* Array+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F1218264FF96600850DE3 /* Array+SafeIndex.swift */; };
 		B03BE60E26497F9A002205AE /* CoordinatorPatternApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BE60D26497F9A002205AE /* CoordinatorPatternApp.swift */; };
 		B03BE61026497F9A002205AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BE60F26497F9A002205AE /* ContentView.swift */; };
 		B03BE61226497F9C002205AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B03BE61126497F9C002205AE /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C9F1218264FF96600850DE3 /* Array+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeIndex.swift"; sourceTree = "<group>"; };
 		B03BE60A26497F9A002205AE /* CoordinatorPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03BE60D26497F9A002205AE /* CoordinatorPatternApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorPatternApp.swift; sourceTree = "<group>"; };
 		B03BE60F26497F9A002205AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -124,6 +126,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C9F1217264FF94B00850DE3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C9F1218264FF96600850DE3 /* Array+SafeIndex.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		B03BE60126497F9A002205AE = {
 			isa = PBXGroup;
 			children = (
@@ -188,13 +198,13 @@
 		B03BE63B26498080002205AE /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE63C26498080002205AE /* ScreenB */,
 				B03BE64226498080002205AE /* Home */,
-				B03BE64826498080002205AE /* ScreenC */,
 				B03BE64E26498080002205AE /* Landing */,
-				B03BE65426498080002205AE /* Signup */,
-				B03BE65A26498080002205AE /* ScreenA */,
 				B03BE66026498080002205AE /* Login */,
+				B03BE65A26498080002205AE /* ScreenA */,
+				B03BE63C26498080002205AE /* ScreenB */,
+				B03BE64826498080002205AE /* ScreenC */,
+				B03BE65426498080002205AE /* Signup */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -202,9 +212,9 @@
 		B03BE63C26498080002205AE /* ScreenB */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE63D26498080002205AE /* ViewModel */,
 				B03BE63F26498080002205AE /* ScreenBCoordinator.swift */,
 				B03BE64026498080002205AE /* View */,
+				B03BE63D26498080002205AE /* ViewModel */,
 			);
 			path = ScreenB;
 			sourceTree = "<group>";
@@ -228,9 +238,9 @@
 		B03BE64226498080002205AE /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE64326498080002205AE /* ViewModel */,
 				B03BE64526498080002205AE /* HomeCoordinator.swift */,
 				B03BE64626498080002205AE /* View */,
+				B03BE64326498080002205AE /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -254,9 +264,9 @@
 		B03BE64826498080002205AE /* ScreenC */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE64926498080002205AE /* ViewModel */,
-				B03BE64B26498080002205AE /* View */,
 				B03BE64D26498080002205AE /* ScreenCCoordinator.swift */,
+				B03BE64B26498080002205AE /* View */,
+				B03BE64926498080002205AE /* ViewModel */,
 			);
 			path = ScreenC;
 			sourceTree = "<group>";
@@ -280,9 +290,9 @@
 		B03BE64E26498080002205AE /* Landing */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE64F26498080002205AE /* ViewModel */,
 				B03BE65126498080002205AE /* LandingCoordinator.swift */,
 				B03BE65226498080002205AE /* View */,
+				B03BE64F26498080002205AE /* ViewModel */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -306,9 +316,9 @@
 		B03BE65426498080002205AE /* Signup */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE65526498080002205AE /* ViewModel */,
-				B03BE65726498080002205AE /* View */,
 				B03BE65926498080002205AE /* SignupCoordinator.swift */,
+				B03BE65726498080002205AE /* View */,
+				B03BE65526498080002205AE /* ViewModel */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -332,9 +342,9 @@
 		B03BE65A26498080002205AE /* ScreenA */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE65B26498080002205AE /* ViewModel */,
 				B03BE65D26498080002205AE /* ScreenACoordinator.swift */,
 				B03BE65E26498080002205AE /* View */,
+				B03BE65B26498080002205AE /* ViewModel */,
 			);
 			path = ScreenA;
 			sourceTree = "<group>";
@@ -358,9 +368,9 @@
 		B03BE66026498080002205AE /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE66126498080002205AE /* ViewModel */,
 				B03BE66326498080002205AE /* LoginCoordinator.swift */,
 				B03BE66426498080002205AE /* View */,
+				B03BE66126498080002205AE /* ViewModel */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -384,9 +394,10 @@
 		B03BE66626498080002205AE /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				B03BE66726498080002205AE /* Typealias.swift */,
-				B03BE66826498080002205AE /* Router.swift */,
+				2C9F1217264FF94B00850DE3 /* Extensions */,
 				B03BE66926498080002205AE /* Coordinator.swift */,
+				B03BE66826498080002205AE /* Router.swift */,
+				B03BE66726498080002205AE /* Typealias.swift */,
 				B03BE66A26498080002205AE /* ViewModifiers */,
 			);
 			path = Shared;
@@ -553,6 +564,7 @@
 				B03BE67026498080002205AE /* HomeCoordinator.swift in Sources */,
 				B03BE67526498080002205AE /* LandingViewModel.swift in Sources */,
 				B03BE67B26498080002205AE /* ScreenAViewModel.swift in Sources */,
+				2C9F1219264FF96600850DE3 /* Array+SafeIndex.swift in Sources */,
 				B03BE68426498080002205AE /* NavigationViewModifier.swift in Sources */,
 				B03BE60E26497F9A002205AE /* CoordinatorPatternApp.swift in Sources */,
 				B03BE68126498080002205AE /* Typealias.swift in Sources */,

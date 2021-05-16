@@ -13,9 +13,8 @@ class HomeCoordinator: Coordinator{
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
     
-    init(parent: BaseCoordinator) {
-        self.parentCoordinators = parent.parentCoordinators
-        self.parentCoordinators.append(parent)
+    init<P: Coordinator>(parent: P) {
+        setupParentCoordinator(parent)
         print("\(#function) --> \(String(describing: self))")
     }
 
@@ -34,8 +33,7 @@ class HomeCoordinator: Coordinator{
             parent: self,
             isNavigating: self.router.isNavigating
         )
-        self.childCoordinators.append(coordinator)
-        self.router.navigateTo(coordinator.start())
+        self.navigateToCoordinator(coordinator, router: self.router)
     }
 
     deinit {

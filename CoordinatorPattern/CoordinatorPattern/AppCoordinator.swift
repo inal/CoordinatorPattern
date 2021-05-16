@@ -18,7 +18,6 @@ class AppCoordinator: Coordinator, ObservableObject{
     
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
-    var parentCoordinator: BaseCoordinator? = nil
 
     var router: Router = .init(isPresented: .constant(false))
 
@@ -37,14 +36,10 @@ class AppCoordinator: Coordinator, ObservableObject{
     }
 
     private var landingCoordinator: some View {
-        let coordinator = LandingCoordinator(parent: self)
-        childCoordinators.append(coordinator)
-        return coordinator.start()
+        startChildCoordinator(LandingCoordinator(parent: self))
     }
 
     private var homeCoordinator: some View {
-        let coordinator = HomeCoordinator(parent: self)
-        childCoordinators.append(coordinator)
-        return coordinator.start()
+        startChildCoordinator(HomeCoordinator(parent: self))
     }
 }

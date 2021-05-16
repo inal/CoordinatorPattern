@@ -14,30 +14,33 @@ class ScreenCCoordinator: Coordinator{
     var childCoordinators: [BaseCoordinator] = []
     var router: Router
     
-    init(
-        parent: BaseCoordinator,
+    init<P: Coordinator>(
+        parent: P,
         isNavigating: Binding<Bool>
     ) {
-        self.parentCoordinators = parent.parentCoordinators
-        self.parentCoordinators.append(parent)
         self.router = Router.init(isPresented: isNavigating)
+        setupParentCoordinator(parent)
         print("\(#function) --> \(String(describing: self))")
     }
 
     func start() -> some View {
         let viewModel = ScreenCViewModel(
             backAction: dismiss,
-            popToRootAction: {
-                self.parentCoordinators.filter { $0 is ScreenACoordinator }.first?.dismiss()
-            },
+            popToRootAction: popToHome,
             popToLoginAction: {
-                (self.parentCoordinators.filter { $0 is AppCoordinator }.first as? AppCoordinator)?.update(.preLogin)
+                self.updateAppState(.preLogin)
             },
-            popToScreenAAction: {
-                self.parentCoordinators.filter { $0 is ScreenBCoordinator }.first?.dismiss()
-            }
+            popToScreenAAction: popToScreenA
         )
         return ScreenCView(viewModel: viewModel, router: router)
+    }
+    
+    func popToHome(){
+        popToCoordinator(HomeCoordinator.self)
+    }
+    
+    func popToScreenA(){
+        popToCoordinator(ScreenACoordinator.self)
     }
 
     deinit {

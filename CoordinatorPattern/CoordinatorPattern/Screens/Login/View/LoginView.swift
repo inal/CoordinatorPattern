@@ -8,16 +8,10 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject private var viewModel: LoginViewModel
-    @ObservedObject private var router: Router
+    @ObservedObject var viewModel: LoginViewModel
+    @ObservedObject var router: Router
     @State private var name: String = ""
     @State private var password: String = ""
-
-    init(viewModel: LoginViewModel,
-         router: Router) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-        _router = ObservedObject(wrappedValue: router)
-    }
 
     var body: some View {
         VStack(spacing: 20){

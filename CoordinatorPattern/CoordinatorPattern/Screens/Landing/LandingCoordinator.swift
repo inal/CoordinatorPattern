@@ -15,9 +15,8 @@ class LandingCoordinator: Coordinator{
     weak var parentCoordinator: BaseCoordinator?
     var childCoordinators: [BaseCoordinator] = []
     
-    init(parent: BaseCoordinator) {
-        self.parentCoordinators = parent.parentCoordinators
-        self.parentCoordinators.append(parent)
+    init<P: Coordinator>(parent: P) {
+        setupParentCoordinator(parent)
         print("\(#function) --> \(String(describing: self))")
     }
 
@@ -38,8 +37,7 @@ class LandingCoordinator: Coordinator{
             parent: self,
             isNavigating: self.router.isNavigating
         )
-        self.childCoordinators.append(loginCoordinator)
-        self.router.navigateTo(loginCoordinator.start())
+        navigateToCoordinator(loginCoordinator, router: router)
     }
 
     func navigateToSignup(){
@@ -52,8 +50,7 @@ class LandingCoordinator: Coordinator{
                     self.navigateToLogin()
                 }
             })
-        self.childCoordinators.append(signupCoordinator)
-        self.router.navigateTo(signupCoordinator.start())
+        navigateToCoordinator(signupCoordinator, router: router)
     }
 
     deinit {

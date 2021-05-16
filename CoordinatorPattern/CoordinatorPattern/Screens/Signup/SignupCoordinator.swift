@@ -12,18 +12,18 @@ class SignupCoordinator: Coordinator{
 
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
-    var router: Router 
+    var router: Router
     let signupCompletion: Action
 
-    init(
-        parent: BaseCoordinator,
+    init<P: Coordinator>(
+        parent: P,
         isNavigating: Binding<Bool>,
         signupCompletion: @escaping Action
     ) {
-        self.parentCoordinators = parent.parentCoordinators
-        self.parentCoordinators.append(parent)
         self.router = Router.init(isPresented: isNavigating)
         self.signupCompletion = signupCompletion
+        setupParentCoordinator(parent)
+        
         print("\(#function) --> \(String(describing: self))")
     }
 

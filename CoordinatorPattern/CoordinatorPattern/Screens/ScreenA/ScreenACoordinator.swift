@@ -14,13 +14,12 @@ class ScreenACoordinator: Coordinator{
     var childCoordinators: [BaseCoordinator] = []
     var router: Router
     
-    init(
-        parent: BaseCoordinator,
+    init<P: Coordinator>(
+        parent: P,
         isNavigating: Binding<Bool>
     ) {
-        self.parentCoordinators = parent.parentCoordinators
-        self.parentCoordinators.append(parent)
         self.router = Router.init(isPresented: isNavigating)
+        setupParentCoordinator(parent)
         print("\(#function) --> \(String(describing: self))")
     }
 
@@ -33,8 +32,7 @@ class ScreenACoordinator: Coordinator{
                 let screenBCoordinator = ScreenBCoordinator(
                     parent: self,
                     isNavigating: self.router.isNavigating)
-                self.childCoordinators.append(screenBCoordinator)
-                self.router.navigateTo(screenBCoordinator.start())
+                self.navigateToCoordinator(screenBCoordinator, router: self.router)
             }
         )
         return ScreenAView(viewModel: viewModel, router: router)

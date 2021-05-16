@@ -9,17 +9,16 @@ import Foundation
 import SwiftUI
 
 class LoginCoordinator: Coordinator{
-
     var parentCoordinators: [BaseCoordinator] = []
     var childCoordinators: [BaseCoordinator] = []
-    var router: Router 
-    init(
-        parent: BaseCoordinator,
+    var router: Router
+    
+    init<P: Coordinator>(
+        parent: P,
         isNavigating: Binding<Bool>
     ) {
-        self.parentCoordinators = parent.parentCoordinators
-        self.parentCoordinators.append(parent)
         self.router = Router.init(isPresented: isNavigating)
+        setupParentCoordinator(parent)
 
         print("\(#function) --> \(String(describing: self))")
     }
@@ -32,7 +31,7 @@ class LoginCoordinator: Coordinator{
             loginAction: { (name, password) in
                 print("Inserted name and password is - \(name) and \(password)")
                 print("This is just to demonstrate if data needs to be passed from one screen to the other. Just pass data in next screen's view model")
-                (self.parentCoordinators.filter { $0 is AppCoordinator }.first as? AppCoordinator)?.update(.postLogin)
+                self.updateAppState(.postLogin)
             }
         )
         return LoginView(viewModel: viewModel, router: router)

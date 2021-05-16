@@ -8,7 +8,7 @@
 import SwiftUI
 
 /*
- Why are we creating 2 protocols BaseCooridnator and Coordinator?
+ We are creating two protocols BaseCooridnator and Coordinator:
  
  Array of type Coordinator cannot be declared inside Coordinator protocol
  due to associatedtype type and associatedtype is added to return opaque
@@ -30,7 +30,7 @@ protocol Coordinator: BaseCoordinator {
     func start() -> U
 }
 
-extension Coordinator{
+extension Coordinator {
     
     func startChildCoordinator<C: Coordinator>(_ coordinator: C) -> some View {
         childCoordinators.append(coordinator)
@@ -69,7 +69,7 @@ extension Coordinator{
         for (_, childCoordinator) in childCoordinators.enumerated() {
             childCoordinator.stop()
         }
-
+        
         // Remove self from parent's childCoordinators
         guard let parent = parentCoordinators.last else { return }
         for (index, coordinator) in parent.childCoordinators.enumerated() {
@@ -78,12 +78,12 @@ extension Coordinator{
                 break
             }
         }
-
+        
         // Clean up arrays
         parentCoordinators.removeAll()
         childCoordinators.removeAll()
     }
-
+    
     /*
      Helper method to dismiss router and consecutive childcoordinators routers
      Make sure to dismiss self router first then rest of the children else screen will show weird transitions.
