@@ -9,16 +9,33 @@ import SwiftUI
 import Combine
 
 class HomeViewModel: ObservableObject{
-    let tab1Action: Action
-    let tab2Action: Action
-
+    
+    enum Tab{
+        case tab1
+        case tab2
+    }
+    
+    @Published private(set) var selectedTab: Tab = .tab1
+    
+    private var tabSelectedAction: (Tab)-> AnyView
+    
     init(
-        tab1Action: @escaping Action,
-        tab2Action: @escaping Action
+        tabSelectedAction: @escaping (Tab)-> AnyView
     ){
-        self.tab1Action = tab1Action
-        self.tab2Action = tab2Action
+        self.tabSelectedAction = tabSelectedAction
         print("\(#function) --> \(String(describing: self))")
+    }
+    
+    func tab1buttonTapped(){
+        selectedTab = .tab1
+    }
+    
+    func tab2buttonTapped(){
+        selectedTab = .tab2
+    }
+    
+    var selectedTabView: some View{
+        tabSelectedAction(selectedTab)
     }
 
     deinit {

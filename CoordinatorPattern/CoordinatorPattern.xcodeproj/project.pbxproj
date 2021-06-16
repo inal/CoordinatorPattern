@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C60A00F2679F8560013BE06 /* Tab1Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60A00E2679F8560013BE06 /* Tab1Coordinator.swift */; };
+		2C60A01C2679F8790013BE06 /* Tab1View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60A01B2679F8790013BE06 /* Tab1View.swift */; };
+		2C60A0212679F8880013BE06 /* Tab1ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60A0202679F8880013BE06 /* Tab1ViewModel.swift */; };
+		2C60A0262679F8A10013BE06 /* Tab2Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60A0252679F8A10013BE06 /* Tab2Coordinator.swift */; };
+		2C60A03D267A1D330013BE06 /* Tab2View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60A03A267A1D330013BE06 /* Tab2View.swift */; };
+		2C60A03E267A1D330013BE06 /* Tab2ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C60A03C267A1D330013BE06 /* Tab2ViewModel.swift */; };
 		2C9F1219264FF96600850DE3 /* Array+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9F1218264FF96600850DE3 /* Array+SafeIndex.swift */; };
 		B03BE60E26497F9A002205AE /* CoordinatorPatternApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BE60D26497F9A002205AE /* CoordinatorPatternApp.swift */; };
 		B03BE61026497F9A002205AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03BE60F26497F9A002205AE /* ContentView.swift */; };
@@ -60,6 +66,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C60A00E2679F8560013BE06 /* Tab1Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab1Coordinator.swift; sourceTree = "<group>"; };
+		2C60A01B2679F8790013BE06 /* Tab1View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab1View.swift; sourceTree = "<group>"; };
+		2C60A0202679F8880013BE06 /* Tab1ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab1ViewModel.swift; sourceTree = "<group>"; };
+		2C60A0252679F8A10013BE06 /* Tab2Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab2Coordinator.swift; sourceTree = "<group>"; };
+		2C60A03A267A1D330013BE06 /* Tab2View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab2View.swift; sourceTree = "<group>"; };
+		2C60A03C267A1D330013BE06 /* Tab2ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tab2ViewModel.swift; sourceTree = "<group>"; };
 		2C9F1218264FF96600850DE3 /* Array+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+SafeIndex.swift"; sourceTree = "<group>"; };
 		B03BE60A26497F9A002205AE /* CoordinatorPattern.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoordinatorPattern.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B03BE60D26497F9A002205AE /* CoordinatorPatternApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorPatternApp.swift; sourceTree = "<group>"; };
@@ -126,6 +138,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C60A00C2679F8380013BE06 /* Tab1 */ = {
+			isa = PBXGroup;
+			children = (
+				2C60A00E2679F8560013BE06 /* Tab1Coordinator.swift */,
+				2C60A0162679F85B0013BE06 /* View */,
+				2C60A01A2679F8600013BE06 /* ViewModel */,
+			);
+			path = Tab1;
+			sourceTree = "<group>";
+		};
+		2C60A00D2679F8420013BE06 /* Tab2 */ = {
+			isa = PBXGroup;
+			children = (
+				2C60A0252679F8A10013BE06 /* Tab2Coordinator.swift */,
+				2C60A039267A1D330013BE06 /* View */,
+				2C60A03B267A1D330013BE06 /* ViewModel */,
+			);
+			path = Tab2;
+			sourceTree = "<group>";
+		};
+		2C60A0162679F85B0013BE06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C60A01B2679F8790013BE06 /* Tab1View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C60A01A2679F8600013BE06 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C60A0202679F8880013BE06 /* Tab1ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		2C60A039267A1D330013BE06 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2C60A03A267A1D330013BE06 /* Tab2View.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2C60A03B267A1D330013BE06 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				2C60A03C267A1D330013BE06 /* Tab2ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		2C9F1217264FF94B00850DE3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +269,8 @@
 				B03BE63C26498080002205AE /* ScreenB */,
 				B03BE64826498080002205AE /* ScreenC */,
 				B03BE65426498080002205AE /* Signup */,
+				2C60A00C2679F8380013BE06 /* Tab1 */,
+				2C60A00D2679F8420013BE06 /* Tab2 */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -542,29 +608,35 @@
 			files = (
 				B03BE67D26498080002205AE /* ScreenAView.swift in Sources */,
 				B03BE67426498080002205AE /* ScreenCCoordinator.swift in Sources */,
+				2C60A0212679F8880013BE06 /* Tab1ViewModel.swift in Sources */,
 				B03BE68326498080002205AE /* Coordinator.swift in Sources */,
 				B03BE68226498080002205AE /* Router.swift in Sources */,
 				B03BE67326498080002205AE /* ScreenCView.swift in Sources */,
+				2C60A01C2679F8790013BE06 /* Tab1View.swift in Sources */,
 				B03BE67726498080002205AE /* LandingView.swift in Sources */,
 				B03BE68026498080002205AE /* LoginView.swift in Sources */,
 				B03BE67F26498080002205AE /* LoginCoordinator.swift in Sources */,
 				B03BE66E26498080002205AE /* ScreenBView.swift in Sources */,
 				B03BE66F26498080002205AE /* HomeViewModel.swift in Sources */,
+				2C60A03D267A1D330013BE06 /* Tab2View.swift in Sources */,
 				B03BE66C26498080002205AE /* ScreenBViewModel.swift in Sources */,
 				B03BE67826498080002205AE /* SignupViewModel.swift in Sources */,
 				B03BE66D26498080002205AE /* ScreenBCoordinator.swift in Sources */,
 				B03BE67A26498080002205AE /* SignupCoordinator.swift in Sources */,
+				2C60A00F2679F8560013BE06 /* Tab1Coordinator.swift in Sources */,
 				B03BE61026497F9A002205AE /* ContentView.swift in Sources */,
 				B03BE67C26498080002205AE /* ScreenACoordinator.swift in Sources */,
 				B03BE67226498080002205AE /* ScreenCViewModel.swift in Sources */,
 				B03BE67626498080002205AE /* LandingCoordinator.swift in Sources */,
 				B03BE67126498080002205AE /* HomeView.swift in Sources */,
+				2C60A0262679F8A10013BE06 /* Tab2Coordinator.swift in Sources */,
 				B03BE67926498080002205AE /* SignupView.swift in Sources */,
 				B03BE68C264980D6002205AE /* AppCoordinator.swift in Sources */,
 				B03BE67026498080002205AE /* HomeCoordinator.swift in Sources */,
 				B03BE67526498080002205AE /* LandingViewModel.swift in Sources */,
 				B03BE67B26498080002205AE /* ScreenAViewModel.swift in Sources */,
 				2C9F1219264FF96600850DE3 /* Array+SafeIndex.swift in Sources */,
+				2C60A03E267A1D330013BE06 /* Tab2ViewModel.swift in Sources */,
 				B03BE68426498080002205AE /* NavigationViewModifier.swift in Sources */,
 				B03BE60E26497F9A002205AE /* CoordinatorPatternApp.swift in Sources */,
 				B03BE68126498080002205AE /* Typealias.swift in Sources */,

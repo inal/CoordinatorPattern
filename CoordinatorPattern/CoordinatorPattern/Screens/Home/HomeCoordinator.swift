@@ -19,21 +19,13 @@ class HomeCoordinator: Coordinator{
     }
 
     func start() -> some View {
-        let viewModel = HomeViewModel(
-            tab1Action: {
-                self.navigateToScreenA()
-            },
-            tab2Action: {}
-        )
-        return HomeView(viewModel: viewModel, router: router)
-    }
-
-    func navigateToScreenA(){
-        let coordinator = ScreenACoordinator(
-            parent: self,
-            isNavigating: self.router.isNavigating
-        )
-        self.navigateToCoordinator(coordinator, router: self.router)
+        let viewModel = HomeViewModel { (tab) -> AnyView in
+            switch tab{
+            case .tab1: return AnyView(Tab1Coordinator(parent: self).start())
+            case .tab2: return AnyView(Tab2Coordinator(parent: self).start())
+            }
+        }
+        return HomeView(viewModel: viewModel, router: self.router)
     }
 
     deinit {

@@ -8,60 +8,55 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject private var viewModel: HomeViewModel
-    @ObservedObject private var router: Router
+    @StateObject var viewModel: HomeViewModel
+    @StateObject var router: Router
     @State var selectedView = 1
 
-    init(
-        viewModel: HomeViewModel,
-        router: Router
-    ) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-        _router = ObservedObject(wrappedValue: router)
-    }
-
     var body: some View {
-        TabView(selection: $selectedView) {
-            tab1
-
-            Text("2")
-            .padding()
-            .tabItem {
-                Label("Second", systemImage: "2.circle")
-            }
-            .tag(2)
+        currentContent
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+        tabBar
+            .padding(.vertical, 16)
+            .padding(.horizontal, 24)
+        
+    }
+    
+    private var currentContent: some View{
+        viewModel.selectedTabView
+    }
+    
+    private var tabBar: some View{
+        HStack{
+            tab1Item
+            tab2Item
         }
     }
-
-    var tab1: some View{
-        NavigationView{
-            VStack{
-                Text("Tab 1")
-                Spacer()
-                Button("Start process"){
-                    viewModel.tab1Action()
-                }
-                Spacer()
-            }
-            .navigation(router)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarHidden(true)
-        .padding()
-        .tabItem {
-            Label("First", systemImage: "1.circle")
-        }
-        .tag(1)
+    
+    private var tab1Item: some View{
+        Button(
+            .init("Tab 1"),
+            action: viewModel.tab1buttonTapped
+        )
+        .frame(maxWidth: .infinity)
+        .background(viewModel.selectedTab == .tab1 ? Color.red : Color.clear)
+    }
+    
+    private var tab2Item: some View{
+        Button(
+            .init("Tab 2"),
+            action: viewModel.tab2buttonTapped
+        )
+        .frame(maxWidth: .infinity)
+        .background(viewModel.selectedTab == .tab2 ? Color.red : Color.clear)
     }
 }
 
 struct HomeScreen_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(
-            viewModel: HomeViewModel(
-                tab1Action: {},
-                tab2Action: {}
-            ),
+            viewModel: HomeViewModel(tabSelectedAction: { (_) -> AnyView in
+                AnyView(EmptyView())
+            }),
             router: Router(isPresented: .constant(false))
         )
     }
