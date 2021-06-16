@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct ScreenCView: View {
-    @ObservedObject private var viewModel: ScreenCViewModel
-    @ObservedObject private var router: Router
-
-    init(viewModel: ScreenCViewModel,
-         router: Router) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-        _router = ObservedObject(wrappedValue: router)
-    }
+    @StateObject var viewModel: ScreenCViewModel
+    @StateObject var router: Router
 
     var body: some View {
         VStack(spacing: 20){
@@ -23,17 +17,18 @@ struct ScreenCView: View {
                 Button(.init(" Back"), action: {
                     viewModel.backAction()
                 })
-                Spacer()
+                Spacer(minLength: 89)
                 Text("Screen C")
-                Spacer()
+                Spacer(minLength: 60)
+                Button(.init("Logout"), action: {
+                    viewModel.popToLoginAction()
+                })
+                Spacer(minLength: 5)
             }
             Spacer()
             Text("This is final screen")
             Button(.init("Back to Root"), action: {
                 viewModel.popToRootAction()
-            })
-            Button(.init("Back to Login"), action: {
-                viewModel.popToLoginAction()
             })
             Button(.init("Back to screen A"), action: {
                 viewModel.popToScreenAAction()

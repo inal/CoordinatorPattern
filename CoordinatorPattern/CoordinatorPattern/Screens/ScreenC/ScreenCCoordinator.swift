@@ -32,11 +32,11 @@ class ScreenCCoordinator: Coordinator{
             },
             popToScreenAAction: popToScreenA
         )
-        return ScreenCView(viewModel: viewModel, router: router)
+        return ScreenCView(viewModel: viewModel, router: self.router)
     }
     
     func popToHome(){
-        popToCoordinator(HomeCoordinator.self)
+        popToCoordinator(Tab1Coordinator.self)
     }
     
     func popToScreenA(){
