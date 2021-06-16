@@ -32,7 +32,7 @@ class SignupCoordinator: Coordinator{
             backAction: dismiss,
             signupAction: signupCompletion
         )
-        return SignupView(viewModel: viewModel, router: router)
+        return SignupView(viewModel: viewModel, router: self.router)
     }
     
     deinit {

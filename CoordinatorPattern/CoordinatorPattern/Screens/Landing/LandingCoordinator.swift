@@ -29,7 +29,7 @@ class LandingCoordinator: Coordinator{
                 self.navigateToSignup()
             }
         )
-        return LandingView(viewModel: viewModel, router: router)
+        return LandingView(viewModel: viewModel, router: self.router)
     }
 
     func navigateToLogin(){

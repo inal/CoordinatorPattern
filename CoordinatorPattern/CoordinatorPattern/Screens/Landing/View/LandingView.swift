@@ -8,15 +8,8 @@
 import SwiftUI
 
 struct LandingView: View {
-    @ObservedObject private var viewModel: LandingViewModel
-    @ObservedObject private var router: Router
-
-    init(viewModel: LandingViewModel,
-         router: Router
-    ) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-        _router = ObservedObject(wrappedValue: router)
-    }
+    @StateObject var viewModel: LandingViewModel
+    @StateObject var router: Router
 
     var body: some View {
         NavigationView{

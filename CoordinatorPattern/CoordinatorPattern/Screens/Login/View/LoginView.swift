@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @ObservedObject var viewModel: LoginViewModel
-    @ObservedObject var router: Router
+    @StateObject var viewModel: LoginViewModel
+    @StateObject var router: Router
     @State private var name: String = ""
     @State private var password: String = ""
 

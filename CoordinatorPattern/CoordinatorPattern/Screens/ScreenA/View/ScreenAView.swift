@@ -8,14 +8,8 @@
 import SwiftUI
 
 struct ScreenAView: View {
-    @ObservedObject private var viewModel: ScreenAViewModel
-    @ObservedObject private var router: Router
-
-    init(viewModel: ScreenAViewModel,
-         router: Router) {
-        _viewModel = ObservedObject(wrappedValue: viewModel)
-        _router = ObservedObject(wrappedValue: router)
-    }
+    @StateObject var viewModel: ScreenAViewModel
+    @StateObject var router: Router
     
     var body: some View {
         VStack(spacing: 20){

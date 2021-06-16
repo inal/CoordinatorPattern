@@ -36,7 +36,7 @@ class ScreenBCoordinator: Coordinator{
                 self.navigateToCoordinator(screenCCoordinator, router: self.router)
             }
         )
-        return ScreenBView(viewModel: viewModel, router: router)
+        return ScreenBView(viewModel: viewModel, router: self.router)
     }
     
     deinit {

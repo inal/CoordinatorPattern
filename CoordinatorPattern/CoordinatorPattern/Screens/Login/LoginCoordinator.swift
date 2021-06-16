@@ -34,7 +34,7 @@ class LoginCoordinator: Coordinator{
                 self.updateAppState(.postLogin)
             }
         )
-        return LoginView(viewModel: viewModel, router: router)
+        return LoginView(viewModel: viewModel, router: self.router)
     }
     
     deinit {
