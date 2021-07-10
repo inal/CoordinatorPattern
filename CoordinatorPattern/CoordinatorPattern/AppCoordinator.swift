@@ -21,12 +21,13 @@ class AppCoordinator: Coordinator, ObservableObject{
 
     var router: Router = .init(isPresented: .constant(false))
 
+    @ViewBuilder
     func start() -> some View {
         switch appState {
         case .preLogin:
-            return AnyView(landingCoordinator)
+            landingCoordinator
         case .postLogin:
-            return AnyView(homeCoordinator)
+            homeCoordinator
         }
     }
 
